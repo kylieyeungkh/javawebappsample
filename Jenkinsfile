@@ -8,8 +8,9 @@ def getFtpPublishProfile(def publishProfilesJson) {
 }
 
 node {
-  withEnv(['AZURE_SUBSCRIPTION_ID=<subscription_id>',
-        'AZURE_TENANT_ID=<tenant_id>']) {
+  withEnv(['AZURE_SUBSCRIPTION_ID=
+4db6e230-5559-4603-af25-b076991b28eb',
+        'AZURE_TENANT_ID=443a6b86-9380-4794-9072-90960acb40e5']) {
     stage('init') {
       checkout scm
     }
@@ -19,8 +20,8 @@ node {
     }
   
     stage('deploy') {
-      def resourceGroup = '<resource_group>'
-      def webAppName = '<app_name>'
+      def resourceGroup = 'app'
+      def webAppName = 'JavaWebApp-kylie'
       // login Azure
       withCredentials([usernamePassword(credentialsId: '<service_princial>', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
        sh '''
